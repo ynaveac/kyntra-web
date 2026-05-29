@@ -1,79 +1,318 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyntra</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kyntra | Control de asistencia inteligente</title>
 
     <style>
-        body{
-            margin:0;
-            font-family:Arial, Helvetica, sans-serif;
-            background:#0f172a;
-            color:white;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .container{
-            max-width:1200px;
-            margin:auto;
-            padding:80px 20px;
-            text-align:center;
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background: #0f172a;
+            color: #ffffff;
+            line-height: 1.6;
         }
 
-        h1{
-            font-size:64px;
-            margin-bottom:10px;
+        a {
+            text-decoration: none;
         }
 
-        .subtitle{
-            font-size:24px;
-            color:#cbd5e1;
-            margin-bottom:40px;
+        .container {
+            width: min(1120px, 92%);
+            margin: auto;
         }
 
-        .description{
-            max-width:700px;
-            margin:auto;
-            line-height:1.8;
-            color:#94a3b8;
+        header {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
-        .button{
-            display:inline-block;
-            margin-top:40px;
-            padding:15px 30px;
-            background:#2563eb;
-            color:white;
-            text-decoration:none;
-            border-radius:10px;
-            font-weight:bold;
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .button:hover{
-            background:#1d4ed8;
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .nav a {
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+
+        .hero {
+            padding: 90px 0 70px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(37,99,235,0.15);
+            color: #93c5fd;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            color: #cbd5e1;
+            font-size: 20px;
+            max-width: 620px;
+            margin-bottom: 34px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            padding: 15px 24px;
+            border-radius: 14px;
+            font-weight: 800;
+            box-shadow: 0 18px 40px rgba(37,99,235,0.35);
+        }
+
+        .btn-secondary {
+            color: #e2e8f0;
+            padding: 15px 24px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.16);
+            font-weight: 700;
+        }
+
+        .panel {
+            background: linear-gradient(180deg, #1e293b, #111827);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+        }
+
+        .panel-card {
+            background: rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .panel-card strong {
+            display: block;
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .panel-card span {
+            color: #94a3b8;
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+        }
+
+        .section-text {
+            color: #cbd5e1;
+            font-size: 18px;
+            max-width: 760px;
+            margin-bottom: 36px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 22px;
+            padding: 26px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #94a3b8;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            border-radius: 30px;
+            padding: 46px;
+            text-align: center;
+        }
+
+        .highlight h2 {
+            font-size: 38px;
+            margin-bottom: 16px;
+        }
+
+        .highlight p {
+            color: #dbeafe;
+            font-size: 18px;
+            margin-bottom: 28px;
+        }
+
+        footer {
+            padding: 34px 0;
+            color: #94a3b8;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+        }
+
+        @media (max-width: 850px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 60px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                gap: 20px;
+            }
         }
     </style>
 </head>
+
 <body>
+    <header>
+        <div class="container nav">
+            <div class="logo">Kyntra</div>
+            <a href="#contacto">Solicitar demo</a>
+        </div>
+    </header>
 
-<div class="container">
+    <main>
+        <section class="container hero">
+            <div>
+                <span class="badge">Control laboral para empresas chilenas</span>
 
-    <h1>Kyntra</h1>
+                <h1>Control de asistencia inteligente, simple y trazable.</h1>
 
-    <div class="subtitle">
-        Conectando personas, tiempo y trazabilidad.
-    </div>
+                <p>
+                    Kyntra ayuda a empresas, pymes y equipos de RRHH a controlar asistencia,
+                    turnos, geolocalización, horas extras y reportes desde una plataforma moderna.
+                </p>
 
-    <div class="description">
-        Plataforma de gestión laboral inteligente diseñada para empresas modernas.
-        Control de asistencia, geolocalización, turnos, horas extras y reportes en una sola solución.
-    </div>
+                <div class="buttons">
+                    <a class="btn-primary" href="#contacto">Solicitar demostración</a>
+                    <a class="btn-secondary" href="#beneficios">Ver beneficios</a>
+                </div>
+            </div>
 
-    <a class="button" href="#">
-        Solicitar Demo
-    </a>
+            <div class="panel">
+                <div class="panel-card">
+                    <strong>08:57</strong>
+                    <span>Entrada registrada con ubicación</span>
+                </div>
 
-</div>
+                <div class="panel-card">
+                    <strong>Turno asignado</strong>
+                    <span>Lunes a viernes · 09:00 a 18:00</span>
+                </div>
 
+                <div class="panel-card">
+                    <strong>Reporte RRHH</strong>
+                    <span>Asistencia, atrasos y horas extras en un solo lugar</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" id="beneficios">
+            <h2 class="section-title">Diseñado para ordenar la asistencia laboral</h2>
+            <p class="section-text">
+                Evita planillas manuales, registros poco claros y pérdida de tiempo administrativo.
+                Kyntra centraliza la información y entrega trazabilidad para la gestión diaria.
+            </p>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>Marcación desde celular</h3>
+                    <p>Los trabajadores pueden registrar entrada y salida desde su dispositivo móvil.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Geolocalización</h3>
+                    <p>Permite validar desde dónde se realizó cada marcación.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Gestión de turnos</h3>
+                    <p>Administra jornadas, horarios y asignaciones por empresa o sucursal.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Horas extras</h3>
+                    <p>Controla solicitudes, aprobaciones y reportería de horas adicionales.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Reportes para RRHH</h3>
+                    <p>Obtén información clara para asistencia, atrasos, ausencias y cumplimiento.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Multiempresa</h3>
+                    <p>Ideal para administrar distintas empresas, sucursales o equipos desde una sola plataforma.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="highlight" id="contacto">
+                <h2>Moderniza el control de asistencia de tu empresa</h2>
+                <p>
+                    Agenda una demostración y conoce cómo Kyntra puede ayudarte a ordenar
+                    la gestión laboral de tu equipo.
+                </p>
+
+                <a class="btn-primary" href="mailto:contacto@kyntra.cl?subject=Solicito%20demo%20de%20Kyntra">
+                    Solicitar demo
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 Kyntra · Control de asistencia inteligente para empresas chilenas.
+    </footer>
 </body>
 </html>
