@@ -6,33 +6,74 @@
   <title>Kyntra | Personas, tiempo y trazabilidad</title>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: Inter, Arial, sans-serif;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(34,211,238,.18), transparent 32%),
-        radial-gradient(circle at 85% 70%, rgba(37,99,235,.20), transparent 35%),
-        #050816;
-      color: #fff;
-      min-height: 100vh;
+      background: #050816;
+      color: #ffffff;
+      overflow-x: hidden;
     }
 
-    a { text-decoration: none; }
+    a {
+      text-decoration: none;
+    }
 
     .container {
       width: min(1180px, 92%);
       margin: auto;
     }
 
-    header { padding: 26px 0; }
+    .glow-1,
+    .glow-2,
+    .glow-3 {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(90px);
+      opacity: 0.35;
+      z-index: -1;
+    }
+
+    .glow-1 {
+      width: 420px;
+      height: 420px;
+      background: #22d3ee;
+      top: -120px;
+      left: -120px;
+    }
+
+    .glow-2 {
+      width: 520px;
+      height: 520px;
+      background: #2563eb;
+      right: -180px;
+      top: 180px;
+    }
+
+    .glow-3 {
+      width: 360px;
+      height: 360px;
+      background: #7c3aed;
+      left: 45%;
+      bottom: -180px;
+    }
+
+    header {
+      padding: 28px 0;
+    }
 
     .nav {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
 
     .brand {
@@ -41,23 +82,23 @@
       gap: 14px;
     }
 
-    .logo {
+    .brand-mark {
       width: 48px;
       height: 48px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #22d3ee, #38bdf8);
+      border-radius: 17px;
+      background: linear-gradient(135deg, #22d3ee, #2563eb);
       color: #020617;
       display: grid;
       place-items: center;
-      font-weight: 900;
       font-size: 24px;
-      box-shadow: 0 0 45px rgba(34,211,238,.35);
+      font-weight: 950;
+      box-shadow: 0 0 45px rgba(34, 211, 238, 0.35);
     }
 
     .brand strong {
       display: block;
       font-size: 23px;
-      letter-spacing: -.5px;
+      letter-spacing: -0.6px;
     }
 
     .brand span {
@@ -65,52 +106,58 @@
       font-size: 14px;
     }
 
-    .nav-actions {
+    .nav-links {
       display: flex;
-      gap: 12px;
       align-items: center;
+      gap: 24px;
     }
 
-    .nav-link {
+    .nav-links a {
       color: #cbd5e1;
-      font-weight: 700;
       font-size: 14px;
+      font-weight: 700;
     }
 
-    .login {
-      color: #e2e8f0;
-      padding: 12px 20px;
-      border: 1px solid rgba(255,255,255,.12);
+    .nav-cta {
+      padding: 12px 18px;
       border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      font-weight: 800;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .hero {
+      min-height: 78vh;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.02fr 0.98fr;
       gap: 70px;
       align-items: center;
-      padding: 78px 0 70px;
+      padding: 80px 0 90px;
     }
 
     .badge {
       display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 10px 18px;
-      border: 1px solid rgba(34,211,238,.25);
-      background: rgba(34,211,238,.08);
-      color: #67e8f9;
       border-radius: 999px;
+      background: rgba(34, 211, 238, 0.08);
+      border: 1px solid rgba(34, 211, 238, 0.24);
+      color: #67e8f9;
+      font-weight: 800;
       margin-bottom: 28px;
-      font-size: 15px;
-      font-weight: 700;
     }
 
     h1 {
-      font-size: clamp(44px, 6vw, 78px);
-      line-height: 1.04;
-      letter-spacing: -2.6px;
-      margin-bottom: 26px;
+      font-size: clamp(48px, 6.5vw, 88px);
+      line-height: 0.98;
+      letter-spacing: -3.5px;
+      margin-bottom: 28px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff, #67e8f9, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .lead {
@@ -118,313 +165,314 @@
       font-size: 21px;
       line-height: 1.75;
       max-width: 650px;
-      margin-bottom: 34px;
+      margin-bottom: 36px;
     }
 
     .actions {
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 48px;
+      margin-bottom: 46px;
     }
 
-    .primary, .secondary {
-      padding: 16px 25px;
-      border-radius: 16px;
-      font-weight: 900;
+    .btn-primary,
+    .btn-secondary {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 9px;
+      padding: 16px 24px;
+      border-radius: 16px;
+      font-weight: 900;
     }
 
-    .primary {
+    .btn-primary {
       background: #22d3ee;
       color: #020617;
-      box-shadow: 0 18px 50px rgba(34,211,238,.28);
+      box-shadow: 0 20px 60px rgba(34, 211, 238, 0.28);
     }
 
-    .secondary {
+    .btn-secondary {
       color: #e2e8f0;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    .metrics {
+    .hero-note {
       display: flex;
-      gap: 42px;
+      gap: 26px;
       flex-wrap: wrap;
-    }
-
-    .metrics strong {
-      display: block;
-      font-size: 30px;
-    }
-
-    .metrics span {
       color: #94a3b8;
       font-size: 15px;
     }
 
-    .mockup {
-      border-radius: 34px;
-      background: linear-gradient(145deg, rgba(148,163,184,.20), rgba(15,23,42,.90));
-      border: 1px solid rgba(255,255,255,.12);
-      padding: 24px;
-      box-shadow: 0 40px 100px rgba(0,0,0,.45);
+    .hero-note strong {
+      color: #ffffff;
     }
 
-    .mock-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      margin-bottom: 24px;
-    }
-
-    .mock-head span { color: #94a3b8; }
-
-    .status {
-      color: #6ee7b7;
-      background: rgba(16,185,129,.12);
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: 14px;
-    }
-
-    .white-card {
-      background: #fff;
-      color: #0f172a;
-      border-radius: 24px;
-      padding: 26px;
-      margin-bottom: 20px;
-    }
-
-    .white-card small {
-      color: #64748b;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .time-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .time {
-      background: #cffafe;
-      color: #0e7490;
-      padding: 13px 18px;
-      border-radius: 16px;
-      font-weight: 900;
-      font-size: 20px;
-      white-space: nowrap;
-    }
-
-    .bar {
-      height: 12px;
-      background: #e2e8f0;
-      border-radius: 999px;
-      margin-top: 24px;
-      overflow: hidden;
-    }
-
-    .bar div {
-      width: 68%;
-      height: 100%;
-      background: #22d3ee;
-    }
-
-    .mini-grid {
+    .orbit-wrap {
+      position: relative;
+      height: 560px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-bottom: 20px;
+      place-items: center;
     }
 
-    .dark-card {
-      background: rgba(15,23,42,.78);
-      border-radius: 22px;
-      padding: 22px;
-    }
-
-    .dark-card span {
-      color: #94a3b8;
-      font-size: 14px;
-    }
-
-    .dark-card strong {
-      display: block;
-      margin-top: 8px;
-      font-size: 20px;
-    }
-
-    .timeline {
-      background: rgba(15,23,42,.78);
-      border-radius: 22px;
-      padding: 24px;
-    }
-
-    .timeline h3 {
-      margin-bottom: 18px;
-      color: #cbd5e1;
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .item {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 18px;
-      color: #e2e8f0;
-    }
-
-    .item:last-child { margin-bottom: 0; }
-
-    .dot {
-      width: 13px;
-      height: 13px;
+    .orbit {
+      position: relative;
+      width: min(520px, 90vw);
+      height: min(520px, 90vw);
       border-radius: 50%;
-      margin-top: 6px;
-      background: #22d3ee;
-      box-shadow: 0 0 20px rgba(34,211,238,.5);
+      background:
+        radial-gradient(circle at center, rgba(34, 211, 238, 0.18), transparent 28%),
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 55%);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: inset 0 0 80px rgba(255, 255, 255, 0.04);
     }
 
-    .item p {
-      color: #94a3b8;
-      font-size: 14px;
-      margin-top: 3px;
+    .orbit::before,
+    .orbit::after {
+      content: "";
+      position: absolute;
+      inset: 58px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255, 255, 255, 0.13);
     }
+
+    .orbit::after {
+      inset: 118px;
+      border-style: solid;
+      border-color: rgba(34, 211, 238, 0.18);
+    }
+
+    .center-k {
+      position: absolute;
+      inset: 50%;
+      transform: translate(-50%, -50%);
+      width: 118px;
+      height: 118px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, #22d3ee, #2563eb);
+      display: grid;
+      place-items: center;
+      color: #020617;
+      font-size: 58px;
+      font-weight: 950;
+      box-shadow: 0 0 80px rgba(34, 211, 238, 0.4);
+      z-index: 3;
+    }
+
+    .node {
+      position: absolute;
+      width: 138px;
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.26);
+    }
+
+    .node strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .node span {
+      color: #94a3b8;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .n1 { top: 24px; left: 50%; transform: translateX(-50%); }
+    .n2 { right: -16px; top: 145px; }
+    .n3 { right: 52px; bottom: 34px; }
+    .n4 { left: 52px; bottom: 34px; }
+    .n5 { left: -16px; top: 145px; }
 
     .section {
-      padding: 70px 0;
+      padding: 82px 0;
     }
 
-    .section-center {
+    .section-title {
+      max-width: 820px;
+      margin-bottom: 42px;
+    }
+
+    .section-title.center {
+      margin-left: auto;
+      margin-right: auto;
       text-align: center;
-      max-width: 780px;
-      margin: 0 auto 42px;
     }
 
-    .section-center h2 {
-      font-size: clamp(34px, 4vw, 52px);
-      line-height: 1.1;
-      letter-spacing: -1.6px;
+    .section-title h2 {
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.06;
+      letter-spacing: -2px;
       margin-bottom: 18px;
     }
 
-    .section-center p {
+    .section-title p {
       color: #94a3b8;
       font-size: 19px;
       line-height: 1.7;
     }
 
-    .cards {
+    .concept-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 22px;
     }
 
-    .feature {
-      background: rgba(255,255,255,.045);
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 26px;
-      padding: 26px;
+    .concept-card {
+      position: relative;
+      min-height: 260px;
+      padding: 30px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      overflow: hidden;
     }
 
-    .icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      background: rgba(34,211,238,.12);
-      margin-bottom: 22px;
-      font-size: 24px;
+    .concept-card::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: rgba(34, 211, 238, 0.10);
+      right: -70px;
+      bottom: -70px;
     }
 
-    .feature h3 {
-      font-size: 21px;
-      margin-bottom: 10px;
+    .concept-number {
+      color: #67e8f9;
+      font-weight: 900;
+      margin-bottom: 40px;
     }
 
-    .feature p {
+    .concept-card h3 {
+      font-size: 28px;
+      letter-spacing: -0.8px;
+      margin-bottom: 14px;
+    }
+
+    .concept-card p {
       color: #94a3b8;
-      line-height: 1.65;
+      line-height: 1.7;
+      font-size: 17px;
     }
 
-    .simple {
+    .split {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 26px;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
       align-items: center;
-      background: rgba(255,255,255,.045);
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 34px;
-      padding: 42px;
+      padding: 54px;
+      border-radius: 40px;
+      background:
+        linear-gradient(135deg, rgba(34, 211, 238, 0.09), rgba(37, 99, 235, 0.08)),
+        rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.10);
     }
 
-    .simple h2 {
-      font-size: clamp(32px, 4vw, 50px);
-      line-height: 1.12;
-      letter-spacing: -1.5px;
-      margin-bottom: 18px;
+    .big-phrase {
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 0.98;
+      letter-spacing: -2.8px;
+      font-weight: 950;
     }
 
-    .simple p {
+    .split p {
       color: #cbd5e1;
-      font-size: 19px;
+      font-size: 20px;
       line-height: 1.75;
       margin-bottom: 24px;
     }
 
-    .simple-list {
-      display: grid;
-      gap: 14px;
+    .pill-list {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .simple-list div {
-      background: rgba(15,23,42,.62);
+    .pill {
+      color: #dbeafe;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      padding: 11px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .feature {
+      padding: 26px;
+      border-radius: 28px;
+      background: #ffffff;
+      color: #020617;
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
       border-radius: 18px;
-      padding: 18px;
-      color: #e2e8f0;
-      border: 1px solid rgba(255,255,255,.07);
+      display: grid;
+      place-items: center;
+      background: #e0f2fe;
+      font-size: 23px;
+      margin-bottom: 22px;
+    }
+
+    .feature h3 {
+      font-size: 21px;
+      letter-spacing: -0.4px;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: #475569;
+      line-height: 1.65;
     }
 
     .cta {
       text-align: center;
+      padding: 64px 34px;
+      border-radius: 44px;
       background:
-        radial-gradient(circle at 20% 20%, rgba(34,211,238,.22), transparent 30%),
-        linear-gradient(135deg, rgba(34,211,238,.14), rgba(37,99,235,.12));
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 36px;
-      padding: 54px 30px;
+        radial-gradient(circle at 20% 10%, rgba(34, 211, 238, 0.25), transparent 34%),
+        radial-gradient(circle at 80% 100%, rgba(37, 99, 235, 0.22), transparent 34%),
+        rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .cta h2 {
-      font-size: clamp(34px, 5vw, 56px);
-      line-height: 1.08;
-      letter-spacing: -1.8px;
-      margin-bottom: 18px;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -2.8px;
+      margin-bottom: 20px;
     }
 
     .cta p {
-      max-width: 680px;
-      margin: 0 auto 28px;
       color: #cbd5e1;
-      font-size: 19px;
+      max-width: 720px;
+      margin: 0 auto 30px;
+      font-size: 20px;
       line-height: 1.7;
     }
 
     footer {
       text-align: center;
       color: #64748b;
-      padding: 34px 0;
-      border-top: 1px solid rgba(255,255,255,.08);
-      margin-top: 60px;
+      padding: 38px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 70px;
     }
 
     .whatsapp-float {
@@ -435,242 +483,292 @@
       height: 64px;
       border-radius: 50%;
       background: #25D366;
-      color: white;
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 30px;
-      box-shadow: 0 12px 34px rgba(37,211,102,.45);
+      box-shadow: 0 12px 34px rgba(37, 211, 102, 0.45);
       z-index: 9999;
-      transition: .2s;
+      transition: 0.2s;
     }
 
     .whatsapp-float:hover {
       transform: scale(1.08);
     }
 
-    @media(max-width: 900px) {
-      header { padding: 22px 0; }
-
-      .nav-actions .nav-link { display: none; }
+    @media (max-width: 960px) {
+      .nav-links a:not(.nav-cta) {
+        display: none;
+      }
 
       .hero {
         grid-template-columns: 1fr;
-        padding-top: 44px;
         gap: 42px;
+        padding-top: 48px;
       }
 
-      .cards {
+      .orbit-wrap {
+        height: 470px;
+      }
+
+      .orbit {
+        width: 430px;
+        height: 430px;
+      }
+
+      .node {
+        width: 122px;
+      }
+
+      .concept-grid,
+      .feature-grid,
+      .split {
         grid-template-columns: 1fr;
       }
 
-      .mini-grid {
-        grid-template-columns: 1fr;
+      .split {
+        padding: 32px;
       }
 
-      .simple {
-        grid-template-columns: 1fr;
-        padding: 28px;
+      .feature {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 560px) {
+      h1 {
+        letter-spacing: -2px;
       }
 
-      .time-row {
-        align-items: flex-start;
-        flex-direction: column;
+      .brand span {
+        display: none;
       }
 
-      .metrics {
-        gap: 28px;
+      .orbit-wrap {
+        height: auto;
+        padding: 22px 0;
+      }
+
+      .orbit {
+        width: 310px;
+        height: 310px;
+      }
+
+      .center-k {
+        width: 86px;
+        height: 86px;
+        border-radius: 26px;
+        font-size: 42px;
+      }
+
+      .node {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .orbit {
+        display: grid;
+        gap: 10px;
+        padding: 18px;
+        height: auto;
+        border-radius: 34px;
+      }
+
+      .orbit::before,
+      .orbit::after,
+      .center-k {
+        display: none;
       }
     }
   </style>
 </head>
 
 <body>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+  <div class="glow-3"></div>
+
   <header class="container">
-    <div class="nav">
-      <div class="brand">
-        <div class="logo">K</div>
+    <nav class="nav">
+      <a class="brand" href="#">
+        <div class="brand-mark">K</div>
         <div>
           <strong>Kyntra</strong>
           <span>Personas · tiempo · trazabilidad</span>
         </div>
-      </div>
+      </a>
 
-      <div class="nav-actions">
-        <a class="nav-link" href="#como-funciona">Cómo funciona</a>
-        <a class="nav-link" href="#beneficios">Beneficios</a>
+      <div class="nav-links">
+        <a href="#idea">La idea</a>
+        <a href="#simple">Simple</a>
+        <a href="#funciones">Funciones</a>
         <a
-          class="login"
+          class="nav-cta"
           href="https://wa.me/56988126769?text=Hola,%20vi%20Kyntra%20y%20me%20gustaría%20conocer%20más%20sobre%20la%20plataforma"
           target="_blank"
         >
           Solicitar demo
         </a>
       </div>
-    </div>
+    </nav>
   </header>
 
   <main>
     <section class="container hero">
       <div>
-        <div class="badge">Nueva generación de gestión laboral</div>
+        <div class="badge">✨ Nueva generación de gestión laboral</div>
 
-        <h1>Conectando personas, tiempo y trazabilidad.</h1>
+        <h1>
+          El tiempo de tu equipo,
+          <span class="gradient-text">finalmente conectado.</span>
+        </h1>
 
         <p class="lead">
-          Kyntra es una plataforma simple, moderna y accesible para registrar asistencia,
-          gestionar jornadas y entender lo que ocurre con tu equipo en tiempo real.
+          Diseñamos una forma más simple de registrar asistencia, gestionar jornadas
+          y entender lo que ocurre en tu operación. Sin complejidad. Sin procesos innecesarios.
         </p>
 
         <div class="actions">
           <a
-            class="primary"
+            class="btn-primary"
             href="https://wa.me/56988126769?text=Hola,%20vi%20Kyntra%20y%20me%20gustaría%20conocer%20más%20sobre%20la%20plataforma"
             target="_blank"
           >
             💬 Hablar por WhatsApp
           </a>
 
-          <a class="secondary" href="#como-funciona">
-            Ver cómo funciona
+          <a class="btn-secondary" href="#idea">
+            Descubrir Kyntra
           </a>
         </div>
 
-        <div class="metrics">
-          <div>
-            <strong>GPS</strong>
-            <span>Marcación con ubicación</span>
-          </div>
-          <div>
-            <strong>Simple</strong>
-            <span>Sin procesos complejos</span>
-          </div>
-          <div>
-            <strong>Web</strong>
-            <span>Acceso desde cualquier lugar</span>
-          </div>
+        <div class="hero-note">
+          <span><strong>Simple</strong> para las personas</span>
+          <span><strong>Inteligente</strong> para las empresas</span>
+          <span><strong>Accesible</strong> para pymes</span>
         </div>
       </div>
 
-      <div class="mockup">
-        <div class="mock-head">
-          <div>
-            <span>Jornada actual</span>
-            <h2>Dashboard</h2>
-          </div>
-          <div class="status">Sistema activo</div>
-        </div>
+      <div class="orbit-wrap">
+        <div class="orbit">
+          <div class="center-k">K</div>
 
-        <div class="white-card">
-          <small>Última marcación</small>
-          <div class="time-row">
-            <h2>Entrada registrada</h2>
-            <div class="time">08:31</div>
-          </div>
-          <div class="bar"><div></div></div>
-        </div>
-
-        <div class="mini-grid">
-          <div class="dark-card">
-            <span>Ubicación</span>
-            <strong>Dentro del perímetro</strong>
-          </div>
-          <div class="dark-card">
-            <span>Turno</span>
-            <strong>08:30 - 18:00</strong>
-          </div>
-        </div>
-
-        <div class="timeline">
-          <h3>Línea de tiempo</h3>
-
-          <div class="item">
-            <div class="dot"></div>
-            <div>
-              <strong>Entrada registrada</strong>
-              <p>08:31 · Oficina central</p>
-            </div>
+          <div class="node n1">
+            <strong>Personas</strong>
+            <span>Equipos conectados desde cualquier lugar.</span>
           </div>
 
-          <div class="item">
-            <div class="dot"></div>
-            <div>
-              <strong>Colación programada</strong>
-              <p>13:00 - 14:00</p>
-            </div>
+          <div class="node n2">
+            <strong>Tiempo</strong>
+            <span>Jornadas, turnos y eventos ordenados.</span>
           </div>
 
-          <div class="item">
-            <div class="dot"></div>
-            <div>
-              <strong>Salida pendiente</strong>
-              <p>Fin de jornada</p>
-            </div>
+          <div class="node n3">
+            <strong>Ubicación</strong>
+            <span>Marcaciones con trazabilidad.</span>
+          </div>
+
+          <div class="node n4">
+            <strong>Datos</strong>
+            <span>Información útil para decidir mejor.</span>
+          </div>
+
+          <div class="node n5">
+            <strong>Control</strong>
+            <span>Claridad sin procesos complejos.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="container section" id="como-funciona">
-      <div class="section-center">
+    <section class="container section" id="idea">
+      <div class="section-title center">
         <h2>Todo comienza con una marca.</h2>
         <p>
-          Cada entrada, salida o evento de jornada se transforma en información clara,
-          trazable y útil para administrar mejor tu operación.
+          Kyntra transforma acciones simples en información conectada para que cada empresa
+          pueda trabajar con mayor orden, claridad y trazabilidad.
         </p>
       </div>
 
-      <div class="cards">
-        <div class="feature">
-          <div class="icon">📍</div>
-          <h3>Marca desde el celular</h3>
-          <p>El trabajador registra asistencia desde su dispositivo, con ubicación asociada.</p>
+      <div class="concept-grid">
+        <div class="concept-card">
+          <div class="concept-number">01</div>
+          <h3>Movimiento</h3>
+          <p>Cada jornada comienza con una acción simple: marcar desde donde ocurre el trabajo.</p>
         </div>
 
-        <div class="feature">
-          <div class="icon">🕒</div>
-          <h3>Jornadas simples</h3>
-          <p>Gestiona horarios, turnos, colaciones y eventos de jornada sin planillas eternas.</p>
+        <div class="concept-card">
+          <div class="concept-number">02</div>
+          <h3>Conexión</h3>
+          <p>La información fluye automáticamente para reducir planillas, errores y tareas repetidas.</p>
         </div>
 
-        <div class="feature">
-          <div class="icon">📊</div>
-          <h3>Datos claros</h3>
-          <p>Visualiza asistencia, atrasos, ausencias y horas trabajadas desde un solo lugar.</p>
-        </div>
-
-        <div class="feature">
-          <div class="icon">💼</div>
-          <h3>Pensado para pymes</h3>
-          <p>Una solución moderna, cercana y accesible para crecer con mayor orden.</p>
+        <div class="concept-card">
+          <div class="concept-number">03</div>
+          <h3>Trazabilidad</h3>
+          <p>Cada evento queda disponible cuando lo necesitas, con contexto, horario y ubicación.</p>
         </div>
       </div>
     </section>
 
-    <section class="container section" id="beneficios">
-      <div class="simple">
-        <div>
-          <h2>Orden laboral sin complicar a tu equipo.</h2>
-          <p>
-            Kyntra nace para que pequeñas y medianas empresas puedan controlar asistencia
-            de forma simple, moderna y económica, sin depender de equipos costosos ni
-            procesos difíciles de mantener.
-          </p>
-
-          <a
-            class="primary"
-            href="https://wa.me/56988126769?text=Hola,%20quiero%20agendar%20una%20demo%20de%20Kyntra"
-            target="_blank"
-          >
-            Agendar una demo
-          </a>
+    <section class="container section" id="simple">
+      <div class="split">
+        <div class="big-phrase">
+          Menos planillas.<br />
+          Más claridad.
         </div>
 
-        <div class="simple-list">
-          <div>✅ Sin planillas manuales difíciles de mantener</div>
-          <div>✅ Información centralizada para administración y RRHH</div>
-          <div>✅ Control de jornadas, turnos y marcaciones</div>
-          <div>✅ Experiencia simple para trabajadores y supervisores</div>
+        <div>
+          <p>
+            Kyntra nace para empresas que necesitan ordenar la asistencia laboral sin incorporar
+            procesos complejos, equipos costosos o sistemas difíciles de usar.
+          </p>
+
+          <div class="pill-list">
+            <span class="pill">Fácil de usar</span>
+            <span class="pill">Moderno</span>
+            <span class="pill">Económico</span>
+            <span class="pill">Pensado para crecer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="funciones">
+      <div class="section-title">
+        <h2>Una base simple para gestionar mejor.</h2>
+        <p>
+          Sin mostrar complejidad innecesaria. Solo las herramientas que una empresa necesita
+          para comenzar a ordenar su gestión laboral.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-icon">📍</div>
+          <h3>Ubicación</h3>
+          <p>Verifica dónde ocurre cada marcación y mejora la trazabilidad diaria.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🕒</div>
+          <h3>Jornadas</h3>
+          <p>Organiza horarios, turnos y eventos laborales desde una plataforma clara.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">📊</div>
+          <h3>Información</h3>
+          <p>Transforma registros en datos útiles para administración y toma de decisiones.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🏢</div>
+          <h3>Escalable</h3>
+          <p>Ideal para pequeñas empresas, sucursales y equipos en crecimiento.</p>
         </div>
       </div>
     </section>
@@ -679,13 +777,13 @@
       <div class="cta">
         <h2>Descubre Kyntra antes que todos.</h2>
         <p>
-          Estoy preparando una solución simple y moderna para empresas que necesitan
-          controlar asistencia, ordenar jornadas y tener trazabilidad sin pagar de más.
+          Estamos construyendo una plataforma moderna para conectar personas,
+          tiempo y trazabilidad laboral de una forma simple y accesible.
         </p>
 
         <a
-          class="primary"
-          href="https://wa.me/56988126769?text=Hola,%20vi%20Kyntra%20y%20quiero%20recibir%20información"
+          class="btn-primary"
+          href="https://wa.me/56988126769?text=Hola,%20quiero%20recibir%20información%20sobre%20Kyntra"
           target="_blank"
         >
           💬 Quiero recibir información
@@ -699,8 +797,8 @@
   </footer>
 
   <a
-    href="https://wa.me/56988126769?text=Hola,%20vi%20Kyntra%20y%20me%20gustaría%20conocer%20más%20sobre%20la%20plataforma"
     class="whatsapp-float"
+    href="https://wa.me/56988126769?text=Hola,%20vi%20Kyntra%20y%20me%20gustaría%20conocer%20más%20sobre%20la%20plataforma"
     target="_blank"
     title="Hablar por WhatsApp"
   >
